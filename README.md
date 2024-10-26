@@ -12,7 +12,7 @@ A few resources to get you started if this is your first Flutter project:
 - [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
 ![Deskripsi Gambar 1](assets/images/login_page.png)
-![Deskripsi Gambar 2](assets/images/dashboard.png)
+![Deskripsi Gambar 2](assets/images/dashboard_page.png)
 
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
