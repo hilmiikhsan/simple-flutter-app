@@ -1,4 +1,4 @@
-# s_thrift
+# Simple App Login Dashboard
 
 A new Flutter project.
 
