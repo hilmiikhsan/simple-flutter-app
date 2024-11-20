@@ -62,7 +62,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       return "Password tidak boleh kosong";
                     } else if (value.length < 8) {
                       return "Password minimal 8 karakter";
-                    } else if (!RegExp(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)').hasMatch(value)) {
+                    } else if (!RegExp(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)')
+                        .hasMatch(value)) {
                       return "Password harus mengandung huruf besar, huruf kecil, \ndan angka";
                     }
                     return null;
