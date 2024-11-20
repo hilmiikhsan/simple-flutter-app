@@ -1,72 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:simple_app_login_dashboard/screen/about_screen.dart';
+import 'package:simple_app_login_dashboard/screen/product_screen.dart';
+import 'package:simple_app_login_dashboard/screen/profile_screen.dart';
 
-class DashboardScreen extends StatelessWidget {
+class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final String username = ModalRoute.of(context)!.settings.arguments as String;
+  State<DashboardScreen> createState() => _DashboardScreenState();
+}
 
+class _DashboardScreenState extends State<DashboardScreen> {
+  final pages = [
+    const ProductScreen(),
+    const ProfileScreen(),
+    const AboutScreen(),
+  ];
+
+  int _selectedIndex = 0;
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Icon(Icons.dashboard),
-            SizedBox(width: 8),
-            Text("Dashboard", style: TextStyle(fontWeight: FontWeight.bold)),
-          ],
-        ),
-        backgroundColor: Color(0xFF9B59B6),
-        elevation: 4,
-      ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: RichText(
-              text: TextSpan(
-                children: [
-                  const TextSpan(
-                    text: "Selamat datang, ",
-                    style: TextStyle(fontSize: 24, color: Colors.black),
-                  ),
-                  TextSpan(
-                    text: username,
-                    style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.black),
-                  ),
-                ],
-              ),
-            ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        onTap: (value) {
+          setState(() {
+            _selectedIndex = value;
+          });
+        },
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.inventory),
+            label: "Produk",
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
-            child: Card(
-              child: Column(
-                children: [
-                  ListTile(
-                    leading: const Icon(Icons.person),
-                    title: const Text("Username"),
-                    subtitle: Text(username),
-                  ),
-                  const ListTile(
-                    leading: Icon(Icons.phone),
-                    title: Text("Nomor Telepon"),
-                    subtitle: Text("087785110345"),
-                  ),
-                ],
-              ),
-            ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: "Profil",
           ),
-          TextButton(
-            onPressed: () {
-              Navigator.pushNamedAndRemoveUntil(
-                  context, "/login", (route) => false);
-            },
-            child: const Text("Logout"),
-          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.info),
+            label: "Tentang",
+          )
         ],
       ),
+      body: IndexedStack(index: _selectedIndex, children: pages),
     );
   }
 }
