@@ -14,6 +14,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
         useMaterial3: true,
+        primarySwatch: Colors.purple, // Set a primary color for the app
+        textTheme: const TextTheme(
+          bodyText1: TextStyle(color: Colors.black),
+          bodyText2: TextStyle(color: Colors.black54),
+        ),
       ),
       debugShowCheckedModeBanner: false,
       title: "Simple App Login Dashboard",
